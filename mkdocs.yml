@@ -1,0 +1,92 @@
+site_name: Python template
+repo_url: https://github.com/binnev/python-template/
+repo_name: binnev/python-template
+
+nav:
+  - Home: README.md
+  - Explanation:
+      - Aim of the Project: explanation/aim.md
+  - Tutorials:
+      - tutorials/getting-started.md
+  - How-To Guides:
+      - how-to/maskfile.md
+      - how-to/dependencies.md
+      - how-to/testing.md
+      - how-to/docs.md
+      - how-to/versioning.md
+      - how-to/run-cli.md
+      - how-to/run-api.md
+  - Reference:
+      - Core: reference/core.md
+      - CLI: reference/cli.md
+      - API: reference/api.md
+
+watch:
+  - docs
+  - src # also hot reload when editing docstrings
+
+theme:
+  name: "material"
+  font:
+    code: Source Code Pro
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+    - content.code.copy # enables a copy button in code blocks
+    - content.code.select # allows user to link to line ranges
+    - content.code.annotate # allows placing annotations inside code blocks
+  icon:
+    logo: material/language-python
+
+plugins:
+  - search
+  - mike
+  - mermaid2
+  - mkdocstrings:
+      enabled: true
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            docstring_style: google
+            show_category_heading: false
+            show_bases: false
+            docstring_section_style: spacy
+            members_order: source
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+# This enables the version drop-down in mkdocs material theme
+extra:
+  version:
+    provider: mike

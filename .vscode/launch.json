@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Debug API",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "src.api.app:app",
+                "--reload"
+            ],
+            "jinja": true
+        }
+    ]
+}
